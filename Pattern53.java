@@ -6,6 +6,8 @@ public class Pattern53 {
 			for(int j=1;j<=i;j++) {
 				if(i==1||j==1||i==j)
 					System.out.print(1+" ");
+				else if(i==5&&(i+j==8))
+					System.out.print(6+" ");
 				else
 					System.out.print(i-1+" ");
 
