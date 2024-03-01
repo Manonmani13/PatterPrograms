@@ -9,13 +9,20 @@ public static void main(String[] args) {
 		{
 			if(j==1)
 				System.out.print(i+" ");
-			else {
-				System.out.print(i+k+j+" ");
-				k--;
+			else if(j==2) {
+				System.out.print(i+k+" ");
+			}
+			else if(j==3) {
+				System.out.print(i+k+3+" ");
+			}
+			else if(j==4) {
+				System.out.print(i+k+5+" ");
+			}
+			else  {
+				System.out.print(i+k+6+" ");
 			}
 		}
 		System.out.println();
-		k=4;
 	}
 }
 }
