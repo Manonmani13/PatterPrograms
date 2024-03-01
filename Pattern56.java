@@ -10,7 +10,7 @@ public static void main(String[] args) {
 			if(j==1)
 				System.out.print(i+" ");
 			else {
-				System.out.print(i+k+" ");
+				System.out.print(i+k-j+" ");
 				k--;
 			}
 		}
