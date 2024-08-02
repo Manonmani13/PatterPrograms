@@ -1,53 +1,33 @@
 class Solution {
-    public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> result = new ArrayList<>();
-        
-        if (s == null || s.isEmpty() || words == null || words.length == 0) {
-            return result;
-        }
-        
-        int wordLength = words[0].length();
-        int wordCount = words.length;
-        int totalLength = wordLength * wordCount;
-        
-        // Frequency map for words
-        Map<String, Integer> wordFreqMap = new HashMap<>();
-        for (String word : words) {
-            wordFreqMap.put(word, wordFreqMap.getOrDefault(word, 0) + 1);
-        }
-        
-        for (int i = 0; i < wordLength; i++) {
-            Map<String, Integer> currentMap = new HashMap<>();
-            int left = i;
-            int right = i;
-            int count = 0;
-            
-            while (right + wordLength <= s.length()) {
-                String word = s.substring(right, right + wordLength);
-                right += wordLength;
-                
-                if (wordFreqMap.containsKey(word)) {
-                    currentMap.put(word, currentMap.getOrDefault(word, 0) + 1);
-                    count++;
-                    
-                    while (currentMap.get(word) > wordFreqMap.get(word)) {
-                        String leftWord = s.substring(left, left + wordLength);
-                        currentMap.put(leftWord, currentMap.get(leftWord) - 1);
-                        count--;
-                        left += wordLength;
-                    }
-                    
-                    if (count == wordCount) {
-                        result.add(left);
-                    }
-                } else {
-                    currentMap.clear();
-                    count = 0;
-                    left = right;
-                }
-            }
-        }
-        
-        return result;
+   public static void main(String args[])
+   {
+   String s1="abcded";
+   String s2="adegs";
+   String s3="hjsacd";
+           Set<Character> commonChars = findCommonCharacters(s1, s2, s3);
+
     }
+    public static Set<Character> findCommonCharacters(String... strings) {
+        if (strings.length == 0) {
+            return new HashSet<>(); // Return an empty set if no strings are provided
+        }
+
+        // Initialize the set with characters from the first string
+        Set<Character> commonChars = new HashSet<>();
+        for (char ch : strings[0].toCharArray()) {
+            commonChars.add(ch);
+        }
+
+        // Intersect with characters from the remaining strings
+        for (int i = 1; i < strings.length; i++) {
+            Set<Character> currentChars = new HashSet<>();
+            for (char ch : strings[i].toCharArray()) {
+                currentChars.add(ch);
+            }
+            commonChars.retainAll(currentChars); // Retain only common characters
+        }
+
+        return commonChars;
+    }
+    
 }
