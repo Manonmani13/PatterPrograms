@@ -1,0 +1,9 @@
+ sum += arr[j]; // Add the element at index j to the sum
+                
+                // Check if the sum matches the target
+                if (sum == target) {
+                    // Return the indices in 1-based indexing
+                    result.add(i + 1); // start index (1-based)
+                    result.add(j + 1); // end index (1-based)
+                    return result; // Return the result immediately
+                }
